@@ -40,20 +40,21 @@ public class MultipartUtility {
         this.charset = charset;
 
         // creates a unique boundary based on time stamp
-        boundary = "===" + System.currentTimeMillis() + "===";
+//        boundary = "-----" + System.currentTimeMillis() + "-----";
+        boundary = "----------------------" + System.currentTimeMillis() ;
         URL url = new URL(requestURL);
         httpConn = (HttpURLConnection) url.openConnection();
         httpConn.setUseCaches(false);
         httpConn.setDoOutput(true);    // indicates POST method
         httpConn.setDoInput(true);
 
-        httpConn.setRequestProperty("Accept:", "*/*");
+        httpConn.setRequestProperty("Accept", "*/*");
         httpConn.setRequestProperty("apikey", "sCDcmGfqK9g26udHHFQSOPD3v2gyFOrm");
         httpConn.setRequestProperty("tenant", "zebra");
         httpConn.setRequestProperty("Content-Type",
                 "multipart/form-data; boundary=" + boundary);
         outputStream = httpConn.getOutputStream();
-        writer = new PrintWriter(new OutputStreamWriter(outputStream, Charset.defaultCharset()),
+        writer = new PrintWriter(new OutputStreamWriter(outputStream, "utf-8"),
                 true);
 
 
@@ -91,13 +92,13 @@ public class MultipartUtility {
                         + "\"; filename=\"" + fileName + "\"")
                 .append(LINE_FEED);
         writer.append("Content-Type: application/octet-stream").append(LINE_FEED);
-        //writer.append("Content-Type: " + URLConnection.guessContentTypeFromName(fileName)).append(LINE_FEED);
-       // writer.append("Content-Transfer-Encoding: binary").append(LINE_FEED);
+      //  writer.append("Content-Type: " + URLConnection.guessContentTypeFromName(fileName)).append(LINE_FEED);
+      //  writer.append("Content-Transfer-Encoding: binary").append(LINE_FEED);
       //  writer.append(LINE_FEED);
         writer.flush();
 
-       // FileInputStream inputStream =   new FileInputStream(uploadFile);
-        InputStream inputStream =      ctx.getResources().openRawResource(R.raw.barcodelabel); //new FileInputStream(uploadFile);
+        FileInputStream inputStream =   new FileInputStream(uploadFile);
+       // InputStream inputStream =      ctx.getResources().openRawResource(R.raw.barcodelabel); //new FileInputStream(uploadFile);
         byte[] buffer = new byte[4096];
         int bytesRead = -1;
         while ((bytesRead = inputStream.read(buffer)) != -1) {

@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                  //   multipart.addHeaderField("tenant", "zebra");
                     multipart.addFormField("sn","XXZKJ201000689" );
 
-                    multipart.addFilePart("zpl_file", new File("/file_is_embedded/barcodelabel.zpl"),getApplicationContext());
+                    multipart.addFilePart("zpl_file", new File("/sdcard/Android/data/net.znordic.rest_api_java/files/barcodelabel.zpl"),getApplicationContext());
 
                     try {
                         Log.d("REST__", "response");
