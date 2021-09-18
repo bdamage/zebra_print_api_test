@@ -96,7 +96,7 @@ public class MultipartUtility {
       //  writer.append(LINE_FEED);
         writer.flush();
 
-       // FileInputStream inputStream =      getResources().openRawResource(R.raw.PT_test_label_Barcode); //new FileInputStream(uploadFile);
+       // FileInputStream inputStream =   new FileInputStream(uploadFile);
         InputStream inputStream =      ctx.getResources().openRawResource(R.raw.barcodelabel); //new FileInputStream(uploadFile);
         byte[] buffer = new byte[4096];
         int bytesRead = -1;
