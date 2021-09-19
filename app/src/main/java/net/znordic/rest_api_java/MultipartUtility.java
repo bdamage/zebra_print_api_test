@@ -70,8 +70,8 @@ public class MultipartUtility {
         writer.append("--" + boundary).append(LINE_FEED);
         writer.append("Content-Disposition: form-data; name=\"" + name + "\"")
                 .append(LINE_FEED);
-        //writer.append("Content-Type: text/plain; charset=" + charset).append(LINE_FEED);
-       // writer.append(LINE_FEED);
+      //  writer.append("Content-Type: text/plain; charset=" + charset).append(LINE_FEED);
+        writer.append(LINE_FEED);
         writer.append(value).append(LINE_FEED);
         writer.flush();
     }
@@ -94,7 +94,7 @@ public class MultipartUtility {
         writer.append("Content-Type: application/octet-stream").append(LINE_FEED);
       //  writer.append("Content-Type: " + URLConnection.guessContentTypeFromName(fileName)).append(LINE_FEED);
       //  writer.append("Content-Transfer-Encoding: binary").append(LINE_FEED);
-      //  writer.append(LINE_FEED);
+        writer.append(LINE_FEED);
         writer.flush();
 
         FileInputStream inputStream =   new FileInputStream(uploadFile);
